@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSSS Visualization</title>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="animation-5.css">
+</head>
+
+<body>
+
+    <div class="info-section">
+        <h2>Direct-Sequence Spread Spectrum (DSSS) - Comprehensive Overview</h2>
+        <h3>Introduction</h3>
+        <div id="DSSS" class="image">
+            <img src="DSSS.jpg" alt="Modem Image" width="340" height="225">
+        </div>
+        <p>Direct-sequence spread spectrum in Wireless Networks is a technique that transmits a data signal over
+            a range of frequencies, spreading it uniformly across the allocated spectrum. Direct-sequence spread
+            spectrum is used to ensure that a particular frequency band (and its corresponding range of
+            frequencies) is kept free from interference. This technique can be related to escaping the problem
+            of co-channel interference (like two different wireless networks transmitting on the same frequency
+            band) and cross-talk interference.</p>
+
+        <h3>Communication and Transmission</h3>
+        <p>Direct-sequence spread spectrum can also be used as an alternative approach to orthogonal frequency
+            division multiplexing, where the baseband signal is encoded and transmitted across a quantity of
+            fixed, predetermined channels. In this situation, each channel may carry different information, data
+            signals, or time slots for different applications within the same network.</p>
+
+        <h3>Historical Context</h3>
+        <p>Direct Sequence Spread Spectrum (DSSS) is a communication system that was developed in the 1980s. It
+            divides the bandwidth of a radio channel into wide frequency bands and transmits these signals over
+            separate frequencies. In this frequency-hopping process, each signal is assigned a different
+            orthogonal sequence of frequencies.</p>
+
+        <h3>Security Applications</h3>
+        <p>All other radios in the range must gain each signal sequentially and then transmit it, which
+            significantly reduces the risk of interference from outside sources or jamming. When security
+            agencies need to be ready to communicate secretly, DSSS can be implemented so that their
+            transmissions cannot be spied upon by other parties who are monitoring broadcasts on a shorter
+            wavelength or through tapping devices.</p>
+
+        <h3>Working Mechanism</h3>
+        <p>In order for a direct-sequence spread spectrum to be used in wireless networks, it is necessary that
+            each node of the network has a frequency synthesizer. This synthesizer is useful in determining the
+            signals that are required to be transmitted and at which frequencies these signals need to be
+            amplified in order to ensure that interference occurs.</p>
+
+        <h3>Modulation Techniques</h3>
+        <p>The spreading code can be transmitted in multiple ways like Binary Phase Shift Keying (BPSK),
+            Quadrature Phase Shift Keying (QPSK), or more complex modulation schemes like Quadrature Amplitude
+            Modulation (QAM). Different modulation schemes are used to select the transmit power in order to
+            achieve certain characteristics.</p>
+
+        <h3>Advantages</h3>
+        <ul>
+            <li>Enhanced signal security without additional hardware</li>
+            <li>Mitigation of radio-to-radio communication jamming</li>
+            <li>Each symbol is encrypted with a specific code</li>
+            <li>Prevents eavesdropping and message confusion</li>
+        </ul>
+
+        <h3>Disadvantages</h3>
+        <ul>
+            <li>Large acquisition time with serial search system</li>
+            <li>Requires high-rate PN code generator</li>
+            <li>Requires very high bandwidth</li>
+            <li>Synchronization affected by variable transmitter-receiver distance</li>
+        </ul>
+    </div>
+
+    <div class="dsss-container">
+        <header class="dsss-header">
+            <h1>Direct Sequence Spread Spectrum (DSSS) Visualizer</h1>
+        </header>
+
+        <div class="dsss-input-section">
+            <div class="input-group">
+                <label for="binaryInput">Binary Input</label>
+                <input type="text" id="binaryInput" placeholder="2-4 bits (0/1)" maxlength="4">
+                <span class="input-hint">Enter 2-4 binary digits</span>
+            </div>
+
+            <div class="input-group">
+                <label for="chipCount">Chip Count</label>
+                <input type="number" id="chipCount" placeholder="8-12" min="8" max="12">
+                <span class="input-hint">8-12 chips</span>
+            </div>
+
+            <button id="visualizeButton" class="btn-primary">
+                Visualize DSSS
+            </button>
+        </div>
+
+        <div class="dsss-visualization-container">
+            <div class="plot-section">
+                <div class="plot-header">
+                    <h3>Original Binary Signal</h3>
+                </div>
+                <svg id="binarySignalPlot" class="dsss-plot"></svg>
+                <div class="sequence-container">
+                    <span class="sequence-label">Sequence:</span>
+                    <div id="binarySequence" class="sequence-display"></div>
+                </div>
+            </div>
+
+            <div class="plot-section">
+                <div class="plot-header">
+                    <h3>Chip Sequence</h3>
+                </div>
+                <svg id="chipSequencePlot" class="dsss-plot"></svg>
+                <div class="sequence-container">
+                    <span class="sequence-label">Sequence:</span>
+                    <div id="chipSequence" class="sequence-display"></div>
+                </div>
+            </div>
+
+            <div class="plot-section">
+                <div class="plot-header">
+                    <h3>Spread Signal</h3>
+                </div>
+                <svg id="spreadSignalPlot" class="dsss-plot"></svg>
+                <div class="sequence-container">
+                    <span class="sequence-label">Sequence:</span>
+                    <div id="spreadSequence" class="sequence-display"></div>
+                </div>
+            </div>
+        </div>
+
+        <section class="dsss-explanation">
+            <h2>DSSS Technique Explained</h2>
+            <div class="explanation-content">
+                <ul>
+                    <li>Original data spread across multiple chips</li>
+                    <li>Increased resistance to interference</li>
+                    <li>Enables robust communication</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- Main Script -->
+    <script src="animation-5.js"></script>
+</body>
+
+</html>

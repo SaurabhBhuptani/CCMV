@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Understanding Modems: Your Gateway to Internet Connectivity</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <link rel="stylesheet" href="animation-3.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>What is a Modem?</h1>
+    </div>
+
+    <div id="modemImage" class="modem-image">
+        <img src="Modem.png" alt="Modem Image" width="768" height="246">
+    </div>
+
+    <div class="section">
+        <h2>Definition</h2>
+        <p id="definitionText">Loading definition...</p>
+    </div>
+
+    <div class="section">
+        <h2>Features of Modem</h2>
+        <ul id="modemFeatures">
+            <!-- Features will be dynamically loaded -->
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Working of Modem</h2>
+        <ol id="modemWorkingSteps">
+            <!-- Working steps will be dynamically loaded -->
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>Visualiser</h2>
+        <div class="signal-modulation">
+            <!-- Modulation Controls at the top -->
+            <div class="modulation-controls">
+                <select id="modulationType">
+                    <option value="ask">Amplitude Shift Keying (ASK)</option>
+                    <option value="fsk">Frequency Shift Keying (FSK)</option>
+                    <option value="psk">Phase Shift Keying (PSK)</option>
+                </select>
+                <input type="text" id="digitalInput" placeholder="Enter digital signal (0s and 1s)" value="101101">
+            </div>
+
+            <!-- Horizontal Layout Container -->
+            <div class="modulation-layout" data-columns="5">
+                <!-- Digital Input Signal Plot -->
+                <div class="digital-input-section">
+                    <label for="digitalInputSignalPlot">Input Signal:</label>
+                    <svg id="digitalInputSignalPlot" width="300" height="300"></svg>
+                </div>
+
+                <!-- Modulator Image -->
+                <div class="modulator-section">
+                    <img id="mod" src="Unit.jpg" alt="Input Signal" width="150" height="200">
+                </div>
+
+                <!-- Modulated Signal Plot -->
+                <div class="modulated-plot-section">
+                    <label for="modulatedSignalPlot">Modulated Signal:</label>
+                    <svg id="modulatedSignalPlot" width="300" height="300"></svg>
+                </div>
+
+                <!-- Demodulator Image -->
+                <div class="demodulator-section">
+                    <img id="demod" src="Unit.jpg" alt="Modulated Signal" width="150" height="200">
+                </div>
+
+                <!-- Demodulated Signal Plot -->
+                <div class="demodulated-plot-section">
+                    <label for="demodulatedSignalPlot">Demodulated Signal:</label>
+                    <svg id="demodulatedSignalPlot" width="300" height="300"></svg>
+                </div>
+            </div>
+
+            <p id="keyTakeaway">Loading takeaway...</p>
+        </div>
+    </div>
+
+    <script src="animation-3.js"></script>
+</body>
+
+</html>

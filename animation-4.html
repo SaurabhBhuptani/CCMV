@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coaxial Cable Layer Animation</title>
+    <link rel="stylesheet" href="animation-4.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Coaxial Cable Layers Exploration</h1>
+
+        <div class="cable-container">
+            <div class="cable" id="cableLayers">
+                <div class="layer outer-cover" data-layer="Outer Cover">
+                    <div class="layer-content"></div>
+                </div>
+                <div class="layer metal-mesh" data-layer="Metal Mesh">
+                    <div class="layer-content"></div>
+                </div>
+                <div class="layer insulator" data-layer="Insulator">
+                    <div class="layer-content"></div>
+                </div>
+                <div class="layer inner-wire" data-layer="Inner Wire">
+                    <div class="layer-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layer-info" id="layerInfo">
+            <h3 id="layerTitle">Layer Information</h3>
+            <p id="layerDescription">Hover over or click on cable layers to explore</p>
+        </div>
+
+        <div class="controls">
+            <button id="explodeBtn">Explode View</button>
+            <button id="resetBtn">Reset View</button>
+        </div>
+    </div>
+
+    <script src="animation-4.js"></script>
+</body>
+
+</html>

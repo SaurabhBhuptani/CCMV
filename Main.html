@@ -1,0 +1,325 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        ICE - Introduction to Communication Engineering Animations
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #0000ff;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .header .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .header .nav .explore-now {
+            padding: 10px 20px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 50px 0;
+        }
+
+        .main-content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .main-content h1 .highlight {
+            color: #fff;
+        }
+
+        .main-content p {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        .main-content .explore-button {
+            padding: 15px 30px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .image-container {
+            margin-top: 50px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+        }
+
+        .topics-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 20px;
+        }
+
+        .topic {
+            text-align: center;
+            margin: 20px;
+            flex: 1 1 200px;
+            max-width: 300px;
+        }
+
+        .topic img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .topic h2 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .topic p {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .learn-more {
+            font-size: 14px;
+            color: #d32f2f;
+            text-decoration: none;
+            border-bottom: 1px solid #d32f2f;
+            padding-bottom: 2px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .main-content {
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .image-container {
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .topic {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+
+        body {
+            background-image: url('e.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            /* Adjust container to ensure it sits on top of the background */
+            position: relative;
+            z-index: 1;
+        }
+
+        .topics-container {
+            /* Adjust to fit 1080p screen width */
+            max-width: 1920px;
+            width: 100%;
+            padding: 0 10%;
+            box-sizing: border-box;
+        }
+
+        .topic {
+            /* Improve topic layout for 1080p */
+            flex: 0 1 calc(20% - 40px);
+            /* 5 topics in a row */
+            margin: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .topic:hover {
+            transform: scale(1.05);
+        }
+
+        .topic img {
+            width: 150px;
+            /* Larger icon */
+            height: 150px;
+            object-fit: contain;
+        }
+
+        .topic h2 {
+            font-size: 28px;
+            margin: 15px 0;
+        }
+
+        .topic p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .learn-more {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #d32f2f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .learn-more:hover {
+            background-color: #ff5252;
+        }
+
+        @media (max-width: 1920px) {
+            .topics-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .topic {
+                flex: 0 1 calc(33.333% - 40px);
+                /* 3 topics in a row on smaller screens */
+            }
+        }
+
+        @media (max-width: 1080px) {
+            .topic {
+                flex: 0 1 calc(50% - 40px);
+                /* 2 topics in a row on mobile */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .topic {
+                flex: 0 1 100%;
+                /* 1 topic per row on very small screens */
+            }
+        }
+
+        .topic img.rounded-icon {
+            border-radius: 50%;
+            /* Makes the image circular */
+            object-fit: cover;
+            /* Ensures the image fills the circular area */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            ICE
+        </div>
+    </div>
+    <div class="container">
+        <div class="main-content">
+            <h1>
+                Animations On
+                <br />
+                Introduction to
+                <span class="highlight">
+                    Communication Engineering
+                </span>
+            </h1>
+            <p>
+                Communication Concepts Made Visual
+            </p>
+            <div class="author">
+                <i class="fas fa-star">
+                </i>
+                By Saurabh Bhuptani
+            </div>
+        </div>
+    </div>
+    <div class="topics-container">
+        <div class="topic">
+            <img alt="Red play button icon" class="rounded-icon" height="100" src="download.png" width="100" />
+            <h2>Topic 1</h2>
+            <p>Signal Sampling and Quantization Visualization</p>
+            <a class="learn-more" href="animation-1.html">LEARN MORE</a>
+        </div>
+        <div class="topic">
+            <img alt="Red play button icon" class="rounded-icon" height="100" src="download.png" width="100" />
+            <h2>Topic 2</h2>
+            <p>DSB-FC, DSB-SC and VSB Visualization</p>
+            <a class="learn-more" href="animation-2.html">LEARN MORE</a>
+        </div>
+        <div class="topic">
+            <img alt="Red play button icon" class="rounded-icon" height="100" src="download.png" width="100" />
+            <h2>Topic 3</h2>
+            <p>Understanding Modems</p>
+            <a class="learn-more" href="animation-3.html">LEARN MORE</a>
+        </div>
+        <div class="topic">
+            <img alt="Red play button icon" class="rounded-icon" height="100" src="download.png" width="100" />
+            <h2>Topic 4</h2>
+            <p>Wired Transmission Media</p>
+            <a class="learn-more" href="animation-4.html">LEARN MORE</a>
+        </div>
+        <div class="topic">
+            <img alt="Red play button icon" class="rounded-icon" height="100" src="download.png" width="100" />
+            <h2>Topic 5</h2>
+            <p>DSSS Visualization</p>
+            <a class="learn-more" href="animation-5.html">LEARN MORE</a>
+        </div>
+    </div>
+</body>
+
+</html>

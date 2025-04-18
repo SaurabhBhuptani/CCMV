@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Signal Sampling and Quantization Visualization</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="animation-1.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Signal Sampling and Quantization</h1>
+
+        <div class="info">
+            <h2>Quantization Overview</h2>
+
+            <div id="quantization" class="image">
+                <img src="quantization.jpg" alt="image" width="600" height="378">
+            </div>
+
+            <div class="info-content">
+                <p>Quantization is a fundamental concept in signal processing and digital communication. It refers to
+                    the process of converting a continuous range of values (such as an analog signal) into a discrete
+                    set of values. This is typically done when converting analog signals into digital signals so that
+                    they can be processed by digital systems like computers, phones, and other devices. Let's break it
+                    down into its key concepts and why it's required.</p>
+
+                <h3>Analog vs. Digital Signals</h3>
+                <ul>
+                    <li><strong>Analog Signals:</strong> These signals have a continuous range of values. For example, a
+                        sound wave or a voltage signal can take any value within a certain range (e.g., 0 to 10 volts).
+                    </li>
+                    <li><strong>Digital Signals:</strong> Digital signals, on the other hand, only take discrete values.
+                        They are usually represented in binary (0s and 1s) but can also be represented in other discrete
+                        values.</li>
+                </ul>
+
+                <h3>Quantization Process</h3>
+                <p> Quantization is the process of mapping a continuous range of values (such as the amplitude of an
+                    analog signal) to a set of discrete levels. This process has two main parts:</p>
+                <ul>
+                    <li><strong>Sampling:</strong> The continuous analog signal is sampled at regular intervals,
+                        producing discrete time signals. This converts the continuous time nature of the signal into a
+                        sequence of samples.</li>
+                    <li><strong>Quantization:</strong> After sampling, each of the sampled values is mapped to the
+                        nearest value in a set of discrete levels. The number of discrete levels is determined by the
+                        bit-depth of the system (e.g., 8-bit, 16-bit, etc.).</li>
+                </ul>
+
+                <h3>Why Quantization is Required</h3>
+                <ul>
+                    <li><strong>Digital Systems Can't Handle Continuous Data:</strong> Digital systems, such as
+                        computers
+                        or smartphones, operate on binary data, meaning they can only process finite, discrete numbers.
+                        Analog signals, like audio or video, contain an infinite number of possible values, which
+                        digital systems cannot directly process.</li>
+                    <li><strong>Storage and Transmission Efficiency:</strong> Storing or transmitting analog signals
+                        directly is inefficient because they require an infinite amount of space or bandwidth. By
+                        quantizing the signal, we reduce the amount of data needed to represent it, making storage and
+                        transmission more feasible.</li>
+                    <li><strong>Digital Signal Processing:</strong> Once a signal is quantized, it can be processed
+                        using
+                        various digital signal processing (DSP) techniques. These techniques allow for operations like
+                        filtering, modulation, compression, and error correction, which are fundamental for modern
+                        communication systems.</li>
+                    <li><strong>Practical Implementation:</strong> In practical terms, it is impossible to work with the
+                        infinite precision of analog signals. Quantization allows us to represent analog signals with a
+                        limited precision that is still sufficient for most applications, such as audio, video, or
+                        sensor data.</li>
+                </ul>
+
+                <h3>Quantization Error</h3>
+
+                <div id="quantization-error" class="image">
+                    <img src="quantization-error.png" alt="image" width="459" height="416">
+                </div>
+
+                <ul>
+                    <li>It is the difference between the actual value of the signal and its quantized value. The error
+                        arises because we are approximating continuous values with discrete ones. The quality of the
+                        quantization depends on the number of discrete levels used:</li>
+                </ul>
+
+                <h3>Advantages</h3>
+                <ul>
+                    <li><strong>Efficient Representation:</strong> Quantization allows continuous signals to be
+                        represented in a form that is compatible with digital systems.</li>
+                    <li><strong>Noise Immunity:</strong> Digital signals are more resistant to noise and interference
+                        compared to analog signals. Once the signal is quantized and converted to a digital form, it can
+                        be transmitted with fewer errors, thanks to error detection and correction techniques.</li>
+                    <li><strong>Storage:</strong> Digital signals require less storage space than their continuous
+                        counterparts because of the reduced number of bits required to represent the signal.</li>
+                </ul>
+
+                <h3>Challenges</h3>
+                <ul>
+                    <li><strong>Loss of Information</strong> Quantization inherently introduces some loss of information
+                        because the signal is approximated to the nearest discrete value.</li>
+                    <li><strong>Quantization Noise:</strong> This noise can degrade the quality of the signal,
+                        especially if the quantization level is too low (e.g., using 8-bit quantization for audio
+                        results in noticeable noise).</li>
+                </ul>
+
+                <p><em>Explore the visualization below to understand sampling and quantization in action!</em></p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="slider-group">
+                <label for="amplitude-slider">
+                    Amplitude: <span id="amplitude-value">2.0 V</span>
+                </label>
+                <input type="range" id="amplitude-slider" min="0.1" max="5" step="0.1" value="2">
+            </div>
+            <div class="slider-group">
+                <label for="frequency-slider">
+                    Frequency: <span id="frequency-value">10 Hz</span>
+                </label>
+                <input type="range" id="frequency-slider" min="1" max="50" step="1" value="10">
+            </div>
+            <div class="slider-group">
+                <label for="fs-slider">
+                    Sampling Frequency: <span id="am-amplitude-value">10 Hz</span>
+                </label>
+                <input type="range" id="fs-slider" min="1" max="100" step="1" value="10">
+            </div>
+            <div class="slider-group">
+                <label for="bitrate-slider">Bit Rate:</label>
+                <input type="range" id="bitrate-slider" min="2" max="8" step="1" value="4">
+                <span id="bitrate-value">4 bits</span>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button id="sample-btn">Sample Signal</button>
+            <button id="quantize-btn">Quantize Signal</button>
+            <button id="reconstruct-btn">Reconstruct Signal</button>
+            <button id="reset-btn">Reset</button>
+        </div>
+
+        <div class="info-section">
+            <p id="nyquist-rate">Nyquist Rate: 20 Hz</p>
+            <p id="sampling-criteria">Sampling Frequency: 1x</p>
+            <p id="nyquist-status">Nyquist Criteria Status</p>
+            <p id="quantization-levels">Quantization Levels: N/A</p>
+        </div>
+
+        <div class="signal-container">
+            <div class="signal-row">
+                <div class="generated-signal">
+                    <h2>Generated Signal</h2>
+                    <svg id="signal-plot" width="770" height="420"></svg>
+                </div>
+                <div class="reconstructed-signal">
+                    <h2>Reconstructed Signal</h2>
+                    <svg id="reconstructed-plot" width="770" height="420"></svg>
+                </div>
+            </div>
+            <div class="signal-row">
+                <div class="sampled-signal">
+                    <h2>Sampled Signal</h2>
+                    <svg id="sampled-plot" width="770" height="420"></svg>
+                </div>
+                <div class="quantized-signal">
+                    <h2>Quantized Signal</h2>
+                    <svg id="quantized-plot" width="770" height="420"></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="animation-1.js"></script>
+</body>
+
+</html>

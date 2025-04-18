@@ -1,0 +1,142 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --background-color: #f4f4f4;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.5;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--background-color);
+}
+
+.header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.header:hover {
+    background-color: #34495e;
+}
+
+.modem-image {
+    width: 768px;
+    height: 246px;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    border-radius: 10px;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.modem-image:hover {
+    transform: scale(1.02);
+}
+
+.section {
+    background-color: var(--white);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.section:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modem-image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.signal-modulation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modulation-layout {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* Dynamic column configuration */
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    /* Space between columns */
+}
+
+/* Specific column width adjustments */
+.digital-input-section,
+.modulated-plot-section,
+.demodulated-plot-section {
+    grid-column: span 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modulator-section,
+.demodulator-section {
+    grid-column: span 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modulation-layout>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modulation-layout img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-bottom: 10px;
+}
+
+.modulation-layout svg {
+    width: 400px;
+    height: 300px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .modulation-layout {
+        grid-template-columns: 1fr;
+        /* Stack vertically on smaller screens */
+    }
+}

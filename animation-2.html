@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DSB-FC, DSB-SC and VSB Visualisation</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="animation-2.css">
+</head>
+
+<body>
+
+    <div class="info-section">
+        <h2>DSB-FC, DSB-SC, VSB Overview</h2>
+
+        <h3>DSB-FC (Double Sideband Full Carrier)</h3>
+        <ul>
+            <li><strong>Definition:</strong> In DSB-FC, both the upper and lower sidebands are transmitted, along with
+                the full unmodulated carrier.</li>
+            <li><strong>Mathematical Representation:</strong> The modulated signal 𝑠(𝑡) for DSB-FC is given by:</li>
+            <div id="DSB-FC" class="image">
+                <img src="DSB-FC.png" alt="image" width="600" height="300">
+            </div>
+            <br>
+            <li><strong>Bandwidth:</strong> The bandwidth of a DSB-FC signal is twice the bandwidth of the message
+                signal. If the message has bandwidth 𝐵, the total bandwidth of the modulated signal is 2𝐵.</li>
+            <li><strong>Power Efficiency:</strong> The carrier is always present, which means that a significant portion
+                of the transmitted power is spent on transmitting the carrier, which does not carry any information.
+                This is inefficient in terms of power utilization.</li>
+        </ul>
+
+        <h3>DSB-SC (Double Sideband Suppressed Carrier)</h3>
+        <ul>
+            <li><strong>Definition:</strong> In DSB-SC, the carrier is suppressed, and only the sidebands (upper and
+                lower) are transmitted. This reduces the power wasted on transmitting the carrier, making it more
+                efficient than DSB-FC.</li>
+            <li><strong>Mathematical Representation:</strong> The modulated signal 𝑠(𝑡) for DSB-SC is given by:</li>
+            <div id="DSB-SC" class="image">
+                <img src="DSB-SC.png" alt="image" width="600" height="250">
+            </div>
+            <br>
+            <li><strong>Bandwidth:</strong> The bandwidth of a DSB-SC signal is the same as the bandwidth of the message
+                signal 𝐵. Since there is no carrier, the bandwidth required is just the bandwidth of the sidebands.
+            </li>
+            <li><strong>Power Efficiency:</strong> The carrier is suppressed, so the transmitted power is more
+                efficient, as all of it is used to convey the information contained in the sidebands.</li>
+            <li><strong>Demodulation:</strong> DSB-SC requires a more complex demodulation process. The receiver needs
+                to regenerate a local carrier signal (using a technique like coherent detection) to demodulate the
+                message, which increases system complexity.</li>
+        </ul>
+
+        <h3>VSB (Vestigial Sideband)</h3>
+        <ul>
+            <li><strong>Definition:</strong> VSB is a compromise between DSB-FC and DSB-SC. In VSB modulation, one of
+                the sidebands is transmitted in full, while the other is partially transmitted (i.e., the sideband is
+                "vestigial" or "partially suppressed"). This allows for bandwidth efficiency while minimizing
+                distortion.</li>
+            <li><strong>Mathematical Representation:</strong> The modulated signal 𝑠(𝑡) for VSB is given by:</li>
+            <div id="VSB" class="image">
+                <img src="VSB.png" alt="image" width="600" height="100">
+            </div>
+            <br>
+            <li><strong>Bandwidth:</strong> VSB is more power-efficient than DSB-FC because it eliminates some of the
+                unnecessary portions of the sidebands while retaining most of the message information.</li>
+            <li><strong>Applications:</strong> VSB is used in applications where bandwidth is constrained, such as in TV
+                broadcasting. For instance, NTSC television uses VSB to transmit video signals. The vestigial sideband
+                allows for efficient bandwidth usage while still preserving the video quality.</li>
+        </ul>
+
+        <h3>Key Differences:</h3>
+        <p>Carrier Presence:</p>
+        <ul>
+            <li>DSB-FC transmits both the carrier and the sidebands, leading to higher power consumption due to the
+                carrier.</li>
+            <li>DSB-SC suppresses the carrier, transmitting only the sidebands, resulting in better power efficiency.
+            </li>
+            <li>VSB transmits the full upper sideband and a part of the lower sideband (the vestigial part), reducing
+                bandwidth while still carrying most of the information.</li>
+        </ul>
+        <p>Bandwidth Efficiency:</p>
+        <ul>
+            <li>DSB-FC has the widest bandwidth requirement, as it transmits both sidebands and the carrier.</li>
+            <li>DSB-SC is the most bandwidth-efficient, transmitting only the sidebands.</li>
+            <li>VSB reduces bandwidth usage compared to DSB-FC by partially suppressing the sideband, making it more
+                bandwidth-efficient without a full loss of quality.</li>
+        </ul>
+        <p>Power Efficiency:</p>
+        <ul>
+            <li>DSB-FC is the least power-efficient because a significant portion of the transmitted power is spent on
+                the carrier, which doesn't carry any information.</li>
+            <li>DSB-SC is the most power-efficient because the carrier is removed, and all transmitted power is used to
+                convey the information.</li>
+            <li>VSB is more power-efficient than DSB-FC but less so than DSB-SC, since the vestigial sideband still
+                consumes some bandwidth and power.</li>
+        </ul>
+        <p>Applications:</p>
+        <ul>
+            <li>DSB-FC is used in traditional AM radio broadcasting.</li>
+            <li>DSB-SC is used in systems where power efficiency is a priority and where coherent demodulation is
+                feasible.</li>
+            <li>VSB is used in television broadcasting (e.g., NTSC standard), where bandwidth is limited and the quality
+                of the signal must be preserved while using less bandwidth.</li>
+        </ul>
+        <div id="Differences" class="image">
+            <img src="difference.png" alt="image" width="1000" height="960">
+        </div>
+    </div>
+
+    <div class="controls">
+        <select id="modulation-type">
+            <option value="DSB-FC">DSB-FC</option>
+            <option value="DSB-SC">DSB-SC</option>
+            <option value="VSB">VSB</option>
+        </select>
+
+        <div class="slider-container">
+            <label for="message-freq">Message Frequency</label>
+            <input type="range" id="message-freq" min="1" max="20" value="5" step="0.1">
+            <span id="message-freq-value">5 Hz</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="message-amplitude">Message Amplitude</label>
+            <input type="range" id="message-amplitude" min="0.1" max="5" value="1" step="0.1">
+            <span id="message-amplitude-value">1 V</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="carrier-freq">Carrier Frequency</label>
+            <input type="range" id="carrier-freq" min="10" max="100" value="50" step="1">
+            <span id="carrier-freq-value">50 Hz</span>
+        </div>
+
+        <div class="slider-container">
+            <label for="carrier-amplitude">Carrier Amplitude</label>
+            <input type="range" id="carrier-amplitude" min="0.1" max="5" value="2" step="0.1">
+            <span id="carrier-amplitude-value">2 V</span>
+        </div>
+    </div>
+
+    <div id="message-chart" class="chart"></div>
+    <div id="carrier-chart" class="chart"></div>
+    <div id="modulated-chart" class="chart"></div>
+    <div id="frequency-chart" class="chart"></div>
+
+    <script src="animation-2.js"></script>
+</body>
+
+</html>
